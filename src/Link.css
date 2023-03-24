@@ -1,0 +1,20 @@
+.linkContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.copyButton {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    color: white;
+    background: blue;
+    border: none;
+}
+
+.url {
+    height: 40px;
+    width: 70%;
+    border-radius: 10px;
+}
