@@ -1,7 +1,9 @@
 body,
-h1 {
+h1,
+p {
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .addContainer {
@@ -14,6 +16,7 @@ h1 {
     justify-content: center;
     align-items: center;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-weight: bold;
     height: 40px;
     width: 100%;
     border-radius: 10px;
@@ -21,4 +24,13 @@ h1 {
     background: blue;
     margin-top: 10px;
     border: none;
+}
+
+.addButton:hover {
+    opacity: 0.8;
+}
+
+.copiedLink {
+    visibility: hidden;
+    font-size: large;
 }

@@ -1,24 +1,49 @@
-import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Link.css";
 
-export function Link(): JSX.Element {
+export function Link(linkProps: LinkProps): JSX.Element {
     async function copyLink() {
         const url = (document.getElementById("url") as HTMLInputElement).value;
-        if ("clipboard" in navigator) {
-            return await navigator.clipboard.writeText(url);
-        } else {
-            return document.execCommand("copy", true, url);
-        }
     }
 
+    //TODO set url in links when focus left
     return (
         <div className="linkContainer">
-            <button className="copyButton" onClick={copyLink}>
+            <button
+                className="copyButton"
+                onClick={() => {
+                    linkProps.copiedCallback(linkProps.id);
+                }}
+            >
                 <FontAwesomeIcon icon={faCopy} />
             </button>
-            <input className="url" id="url"></input>
+            <input
+                className="url"
+                id="url"
+                autoComplete="false"
+                onChange={(event) => {
+                    linkProps.updateCallback(event, linkProps.id);
+                }}
+                value={linkProps.link}
+            ></input>
+            <button
+                className="removeLink"
+                onClick={() => {
+                    linkProps.removeCallback(linkProps.id);
+                }}
+            >
+                <FontAwesomeIcon icon={faTimes} />
+            </button>
         </div>
     );
+}
+
+interface LinkProps {
+    id: number;
+    link: string;
+    copiedCallback: Function;
+    removeCallback: Function;
+    updateCallback: Function;
 }

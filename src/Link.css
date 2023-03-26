@@ -13,8 +13,38 @@
     border: none;
 }
 
+.copyButton:hover {
+    opacity: 0.8;
+}
+
 .url {
     height: 40px;
     width: 70%;
-    border-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: white;
+    background-color: black;
+    color: white;
+    font-size: large;
+}
+
+textarea:focus,
+.url:focus {
+    outline: none;
+    border-bottom-color: blue;
+    transition: border-bottom-color 0.5 linear;
+}
+
+.removeLink {
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: large;
+}
+
+.removeLink:hover {
+    opacity: 0.8;
 }
