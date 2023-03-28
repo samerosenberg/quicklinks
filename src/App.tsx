@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import { Link } from "./Link";
 
@@ -59,14 +59,21 @@ function App() {
         setNewLinks(newLinks);
     }
 
+    const launchCallback = useCallback(
+        (linkId: number) => {
+            chrome.tabs.create({ url: links[linkId] });
+        },
+        [links]
+    );
+
     return (
-        <>
+        <main>
             <div className="header">
                 <h1>Quick Links</h1>
             </div>
             <div>
                 <p id="copiedLink" className="copiedLink">
-                    Copied {copiedLink}!
+                    Copied {copiedLink}
                 </p>
             </div>
             <div className="linkList">
@@ -77,6 +84,7 @@ function App() {
                             id={index}
                             link={link}
                             copiedCallback={copiedCallback}
+                            launchCallback={launchCallback}
                             removeCallback={removeCallback}
                             updateCallback={updateCallback}
                         />
@@ -88,7 +96,7 @@ function App() {
                     Add Link!
                 </button>
             </div>
-        </>
+        </main>
     );
 }
 

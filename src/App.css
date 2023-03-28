@@ -6,6 +6,10 @@ p {
     color: white;
 }
 
+main {
+    width: 500px;
+}
+
 .addContainer {
     display: flex;
     justify-content: center;
@@ -18,7 +22,7 @@ p {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-weight: bold;
     height: 40px;
-    width: 100%;
+    width: 60%;
     border-radius: 10px;
     color: white;
     background: blue;

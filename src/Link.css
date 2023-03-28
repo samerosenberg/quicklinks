@@ -4,7 +4,8 @@
     margin-bottom: 5px;
 }
 
-.copyButton {
+.copyButton,
+.launchLink {
     height: 40px;
     width: 40px;
     border-radius: 10px;
@@ -13,7 +14,8 @@
     border: none;
 }
 
-.copyButton:hover {
+.copyButton:hover,
+.launchLink:hover {
     opacity: 0.8;
 }
 

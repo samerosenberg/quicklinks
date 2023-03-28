@@ -1,14 +1,13 @@
-import { faCopy, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCopy,
+    faTimes,
+    faArrowUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Link.css";
 
 export function Link(linkProps: LinkProps): JSX.Element {
-    async function copyLink() {
-        const url = (document.getElementById("url") as HTMLInputElement).value;
-    }
-
-    //TODO set url in links when focus left
     return (
         <div className="linkContainer">
             <button
@@ -18,6 +17,14 @@ export function Link(linkProps: LinkProps): JSX.Element {
                 }}
             >
                 <FontAwesomeIcon icon={faCopy} />
+            </button>
+            <button
+                className="launchLink"
+                onClick={() => {
+                    linkProps.launchCallback(linkProps.id);
+                }}
+            >
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </button>
             <input
                 className="url"
@@ -46,4 +53,5 @@ interface LinkProps {
     copiedCallback: Function;
     removeCallback: Function;
     updateCallback: Function;
+    launchCallback: Function;
 }
