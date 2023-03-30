@@ -1,8 +1,8 @@
-## Quick Links Chrome Extension
+# Quick Links Chrome Extension
 
-# How to Build a Chrome Extension using React in Typescript
+## How to Build a Chrome Extension using React in Typescript
 
-## React Setup:
+### React Setup:
 
 1.  Create a new React project
 
@@ -11,7 +11,7 @@
 -   Run this in a terminal replacing app-name with the name of your app
 -   Feel free to clear out the contents of App.tsx and App.css to start with a clean slate
 
-## Chrome Setup
+### Chrome Setup
 
 1. In public/ create a manifest.json file
 
@@ -37,6 +37,6 @@
 
 -   Check out the [Chrome Developer Docs](https://developer.chrome.com/docs/extensions/mv3/manifest/) for more info on each key
 
-## Add the Extension to your local chrome browser
+### Add the Extension to your local chrome browser
 
 //TODO
