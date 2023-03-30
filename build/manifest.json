@@ -8,9 +8,9 @@
         "default_title": "Open the popup"
     },
     "icons": {
-        "16": "logo192.png",
-        "48": "logo192.png",
-        "128": "logo192.png"
+        "16": "link-solid.png",
+        "48": "link-solid.png",
+        "128": "link-solid.png"
     },
     "permissions": ["storage", "tabs"]
 }
