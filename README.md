@@ -73,13 +73,13 @@ npm run build
 -   App.tsx
 
     -   The first thing we want to do is create 2 state variables to hold the list of links and the currently copied link
-        https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L6-L7
+        https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#L6-L7
     -   Then we will use React's useEffect hook to load in our links. 2 things to note here 
         1. useEffect allows our app to load data on initial load and/or when a value in the dependencies is changed. For this specific case we will noy list any dependencies as we only need to run this once. Check out the [docs](https://react.dev/reference/react/useEffect) for more info. 
         2. chrome.storage.local is chrome's way of letting developers store data locally in their chrome sessions. If you'd like you can also use chrome.storage.sync to sync your links list across browsers instances. Check out the [docs](https://developer.chrome.com/docs/extensions/reference/storage/) for more info.
-    https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L9-L15
+    https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#L9-L15
     -   Next we will add 2 helper methods for storing our links locally once they have been entered as well as adding new rows for more links
-        https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L17-L25
+        https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#L17-L25
     -   Then we will declare our callbacks for the Links component which gives it access to it's parent classes links property.
     -   And finally we will declare return our component
 
