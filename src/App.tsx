@@ -36,6 +36,9 @@ function App() {
         const copiedLinkDiv = document.getElementById("copiedLink");
         if (copiedLinkDiv) {
             copiedLinkDiv.style.visibility = "visible";
+            setTimeout(() => {
+                copiedLinkDiv.style.visibility = "hidden";
+            }, 5000);
         }
     }
 

@@ -25,7 +25,7 @@ npm run build
 
 ### Chrome Setup
 
--   In public/ create a manifest.json file
+-   In app-name/public/ create a manifest.json file
 
 -   To start it can look something like this
 
@@ -54,5 +54,41 @@ npm run build
 1. Open a Chrome browser and open a new tab to [chrome://extensions/](chrome://extensions/)
 2. If you haven't already switch on developer mode in the top right
 3. Then click the "Load Unpacked" button in the top left
-4. This should open a file explorer and you want to go to open app-name/build/
+4. This should open a file explorer and you want to open app-name/build/
 5. The extension should show up on your list now and in your extensions popup
+
+## Building Quick Links
+
+### UI
+
+-   index.tsx
+
+    -   Chrome extensions can't rely on a root element always being available so here we will create a div with our
+        https://github.com/serose99/quicklinks/blob/main/src/index.tsx#L1-L15
+
+-   index.css
+
+    -   This defines the dimensions of the actual popup
+
+-   App.tsx
+
+    -   The first thing we want to do is create 2 state variables to hold the list of links and the currently copied link
+        https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L6-L7
+    -   Then we will use React's useEffect hook to load in our links. 2 things to note here 
+        1. useEffect allows our app to load data on initial load and/or when a value in the dependencies is changed. For this specific case we will noy list any dependencies as we only need to run this once. Check out the [docs](https://react.dev/reference/react/useEffect) for more info. 
+        2. chrome.storage.local is chrome's way of letting developers store data locally in their chrome sessions. If you'd like you can also use chrome.storage.sync to sync your links list across browsers instances. Check out the [docs](https://developer.chrome.com/docs/extensions/reference/storage/) for more info.
+    https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L9-L15
+    -   Next we will add 2 helper methods for storing our links locally once they have been entered as well as adding new rows for more links
+        https://github.com/serose99/quicklinks/blob/main/src/App.tsx#L17-L25
+    -   Then we will declare our callbacks for the Links component which gives it access to it's parent classes links property.
+    -   And finally we will declare return our component
+
+-   App.css
+
+-   Link.tsx
+
+    -   interface LinkProps
+        -   To pass through the link id and callbacks we will use a new interface LinkProps as the type for the parameter for this component
+    -   Here each row is a simple div container with 2 buttons for the copy and launch link, an input for the link, and then another button for the delete link. Each of these onClick will call their respective callbacks so the parent can manipulate the links array as needed
+
+-   Link.css
