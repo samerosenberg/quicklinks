@@ -12,5 +12,5 @@
         "48": "link-solid.png",
         "128": "link-solid.png"
     },
-    "permissions": ["storage", "tabs"]
+    "permissions": ["storage", "tabs", "clipboardWrite"]
 }

@@ -59,16 +59,17 @@ npm run build
 
 ## Building Quick Links
 
-### UI
+### Main App
 
 -   index.tsx
 
     -   Chrome extensions can't rely on a root element always being available so here we will create a div with our
-        https://github.com/serose99/quicklinks/blob/main/src/index.tsx#L1-L15
+        https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/index.tsx
 
 -   index.css
 
     -   This defines the dimensions of the actual popup
+    https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/index.css
 
 -   App.tsx
 
@@ -81,14 +82,36 @@ npm run build
     -   Next we will add 2 helper methods for storing our links locally once they have been entered as well as adding new rows for more links
         https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#L17-L25
     -   Then we will declare our callbacks for the Links component which gives it access to it's parent classes links property.
+    https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#27-70
     -   And finally we will declare return our component
+    https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/App.tsx#72-104
 
 -   App.css
+https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/App.css
 
 -   Link.tsx
 
     -   interface LinkProps
         -   To pass through the link id and callbacks we will use a new interface LinkProps as the type for the parameter for this component
+    https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/Link.tsx#L50-L57
     -   Here each row is a simple div container with 2 buttons for the copy and launch link, an input for the link, and then another button for the delete link. Each of these onClick will call their respective callbacks so the parent can manipulate the links array as needed
+    https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/Link.tsx#L10-L48
 
 -   Link.css
+    https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/Link.css
+
+That's it as far as app content. If you completed the original setup you should be able to run `npm run build` and now see popup in chrome! However you may notice the links won't persist after closing the popup, we will make some additional changes to the manifest.json to enable this. 
+
+### Chrome 
+
+- manifest.json
+    - In here we will add the 'permissions' key which is a list of:
+        - storage; to allow our app to access the chrome storage functionality
+        - tabs: to allow our app to update the tabs in the session
+        - clipboardWrite: to allow our app to copy the links to the clipboard
+    
+    Check out all of the available permissions [here](https://developer.chrome.com/docs/extensions/mv3/declare_permissions/)
+
+And thats it, you should now have a working Chrome Extension!
+
+If this helped you in any way or you like the idea, feel free to star the repo! Thanks!
