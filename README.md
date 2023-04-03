@@ -109,7 +109,7 @@ That's it as far as app content. If you completed the original setup you should 
         - storage; to allow our app to access the chrome storage functionality
         - tabs: to allow our app to update the tabs in the session
         - clipboardWrite: to allow our app to copy the links to the clipboard
-    
+    https://github.com/serose99/quicklinks/blob/aca6e52cfb69784feb0b66dd900e244f6b2912c3/public/manifest.json
     Check out all of the available permissions [here](https://developer.chrome.com/docs/extensions/mv3/declare_permissions/)
 
 And thats it, you should now have a working Chrome Extension!
