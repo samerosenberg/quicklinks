@@ -9,7 +9,7 @@
     height: 40px;
     width: 40px;
     border-radius: 10px;
-    color: white;
+    color: var(--primary);
     background: blue;
     border: none;
 }
@@ -25,9 +25,9 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-color: white;
-    background-color: black;
-    color: white;
+    border-bottom-color: var(--primary);
+    background-color: var(--background);
+    color: var(--primary);
     font-size: large;
 }
 
@@ -41,8 +41,8 @@ textarea:focus,
 .removeLink {
     height: 40px;
     width: 40px;
-    color: white;
-    background-color: black;
+    color: var(--primary);
+    background-color: var(--background);
     border: none;
     font-size: large;
 }

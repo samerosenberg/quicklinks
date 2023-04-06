@@ -3,11 +3,36 @@ h1,
 p {
     display: flex;
     justify-content: center;
-    color: white;
+    color: var(--primary);
 }
 
 main {
     width: 500px;
+}
+
+:root {
+    --background: black;
+    --primary: white;
+    --toggle-left: 5px;
+}
+
+.darkModeContainer {
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: var(--primary);
+    position: relative;
+}
+
+.darkModeToggle {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: orange;
+    position: absolute;
+    top: 5px;
+    left: var(--toggle-left);
+    transition: left 0.5s;
 }
 
 .addContainer {
@@ -24,7 +49,7 @@ main {
     height: 40px;
     width: 60%;
     border-radius: 10px;
-    color: white;
+    color: var(--primary);
     background: blue;
     margin-top: 10px;
     border: none;

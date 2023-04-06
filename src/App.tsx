@@ -5,6 +5,7 @@ import { Link } from "./Link";
 function App() {
     const [links, setLinks] = useState<string[]>([]);
     const [copiedLink, setCopiedLink] = useState("");
+    const [darkMode, setDarkMode] = useState(true);
 
     useEffect(() => {
         chrome.storage.local.get("links", (results) => {
@@ -69,37 +70,56 @@ function App() {
         [links]
     );
 
+    function toggleDarkMode(e: React.MouseEvent<HTMLElement>) {
+        if (!darkMode) {
+            setDarkMode(true);
+            e.currentTarget.style.setProperty("--background", "black");
+            e.currentTarget.style.setProperty("--primary", "white");
+            e.currentTarget.style.setProperty("--toggle-left", "5px");
+        } else {
+            setDarkMode(false);
+            e.currentTarget.style.setProperty("--background", "white");
+            e.currentTarget.style.setProperty("--primary", "black");
+            e.currentTarget.style.setProperty("--toggle-left", "25px");
+        }
+    }
+
     return (
-        <main>
-            <div className="header">
-                <h1>Quick Links</h1>
+        <>
+            <div className="darkModeContainer" onClick={toggleDarkMode}>
+                <div className="darkModeToggle"></div>
             </div>
-            <div>
-                <p id="copiedLink" className="copiedLink">
-                    Copied {copiedLink}
-                </p>
-            </div>
-            <div className="linkList">
-                {links.map((link, index) => {
-                    return (
-                        <Link
-                            key={index}
-                            id={index}
-                            link={link}
-                            copiedCallback={copiedCallback}
-                            launchCallback={launchCallback}
-                            removeCallback={removeCallback}
-                            updateCallback={updateCallback}
-                        />
-                    );
-                })}
-            </div>
-            <div className="addContainer">
-                <button className="addButton" onClick={addLink}>
-                    Add Link!
-                </button>
-            </div>
-        </main>
+            <main>
+                <div className="header">
+                    <h1>Quick Links</h1>
+                </div>
+                <div>
+                    <p id="copiedLink" className="copiedLink">
+                        Copied {copiedLink}
+                    </p>
+                </div>
+                <div className="linkList">
+                    {links.map((link, index) => {
+                        return (
+                            <Link
+                                key={index}
+                                id={index}
+                                link={link}
+                                copiedCallback={copiedCallback}
+                                launchCallback={launchCallback}
+                                removeCallback={removeCallback}
+                                updateCallback={updateCallback}
+                            />
+                        );
+                    })}
+                </div>
+                <div className="addContainer">
+                    <button className="addButton" onClick={addLink}>
+                        Add Link!
+                    </button>
+                </div>
+            </main>
+        </>
     );
 }
 
