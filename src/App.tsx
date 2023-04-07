@@ -13,11 +13,27 @@ function App() {
                 setLinks([...results.links]);
             }
         });
+        chrome.storage.local.get("darkMode", (results) => {
+            setDarkMode(results.darkMode);
+            const root = document.querySelector(":root") as HTMLElement;
+            if (root) {
+                if (results.darkMode) {
+                    setDarkModeEffect(root);
+                } else {
+                    setLightModeEffect(root);
+                }
+            }
+        });
     });
 
     function setNewLinks(links: string[]) {
         setLinks(links);
         chrome.storage.local.set({ links: links });
+    }
+
+    function setNewDarkMode(darkMode: boolean) {
+        setDarkMode(darkMode);
+        chrome.storage.local.set({ darkMode: darkMode });
     }
 
     function addLink(): void {
@@ -71,17 +87,29 @@ function App() {
     );
 
     function toggleDarkMode(e: React.MouseEvent<HTMLElement>) {
-        if (!darkMode) {
-            setDarkMode(true);
-            e.currentTarget.style.setProperty("--background", "black");
-            e.currentTarget.style.setProperty("--primary", "white");
-            e.currentTarget.style.setProperty("--toggle-left", "5px");
-        } else {
-            setDarkMode(false);
-            e.currentTarget.style.setProperty("--background", "white");
-            e.currentTarget.style.setProperty("--primary", "black");
-            e.currentTarget.style.setProperty("--toggle-left", "25px");
+        const root = document.querySelector(":root") as HTMLElement;
+        if (!root) {
+            return;
         }
+        if (!darkMode) {
+            setNewDarkMode(true);
+            setDarkModeEffect(root);
+        } else {
+            setNewDarkMode(false);
+            setLightModeEffect(root);
+        }
+    }
+
+    function setDarkModeEffect(root: HTMLElement) {
+        root.style.setProperty("--background", "black");
+        root.style.setProperty("--primary", "white");
+        root.style.setProperty("--toggle-left", "5px");
+    }
+
+    function setLightModeEffect(root: HTMLElement) {
+        root.style.setProperty("--background", "white");
+        root.style.setProperty("--primary", "black");
+        root.style.setProperty("--toggle-left", "25px");
     }
 
     return (
