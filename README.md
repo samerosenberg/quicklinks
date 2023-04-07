@@ -61,15 +61,17 @@ npm run build
 
 ### Main App
 
+![](./docs/quicklinks.png)
+
 -   index.tsx
 
     -   Chrome extensions can't rely on a root element always being available so here we will create a div with our
-        https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/index.tsx
+    https://github.com/serose99/quicklinks/blob/1da9f074a894a72e1e4dcbe75a30368310a32c5e/src/index.tsx
 
 -   index.css
 
     -   This defines the dimensions of the actual popup
-    https://github.com/serose99/quicklinks/blob/93d78bbc49b91e832db941153d3bb89795ee650d/src/index.css
+    https://github.com/serose99/quicklinks/blob/88e765ddb7f8aff3c4385b87ce2264f31d67aa87/src/index.css
 
 -   App.tsx
 
