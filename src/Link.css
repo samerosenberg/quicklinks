@@ -15,8 +15,9 @@
 }
 
 .copyButton:hover,
-.launchLink:hover {
-    opacity: 0.8;
+.launchLink:hover,
+.removeLink:hover {
+    opacity: 0.5;
 }
 
 .url {
@@ -45,8 +46,4 @@ textarea:focus,
     background-color: var(--background);
     border: none;
     font-size: large;
-}
-
-.removeLink:hover {
-    opacity: 0.8;
 }
