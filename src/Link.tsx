@@ -3,6 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Link.css";
 
+/**
+ * Link component
+ * - Contains row of copy button, launch button, input field, remove button
+ *
+ * @export
+ * @param {LinkProps} linkProps
+ * @return {*}  {JSX.Element}
+ */
 export function Link(linkProps: LinkProps): JSX.Element {
     return (
         <div className="linkContainer">
