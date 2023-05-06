@@ -16,6 +16,10 @@ main {
     --toggle-left: 5px;
 }
 
+header {
+    display: flex;
+}
+
 .darkModeContainer {
     width: 50px;
     height: 30px;
@@ -33,6 +37,21 @@ main {
     top: 5px;
     left: var(--toggle-left);
     transition: left 0.5s;
+}
+
+.quickAdd {
+    height: 40px;
+    width: 40px;
+    background-color: var(--background);
+    color: var(--primary);
+    border: none;
+    margin-left: auto;
+    top: 5px;
+    font-size: x-large;
+}
+
+.quickAdd:hover {
+    opacity: 0.5;
 }
 
 .addContainer {

@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import { Link } from "./Link";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
     const [links, setLinks] = useState<string[]>([]);
@@ -41,6 +43,12 @@ function App() {
         setNewLinks(newLinks);
     }
 
+    async function quickAdd(): Promise<void> {
+        const [curTab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+        const newLinks = [...links, curTab.url!];
+        setNewLinks(newLinks);
+    }
+
     async function copiedCallback(id: number): Promise<void> {
         const url = links[id];
         setCopiedLink(url);
@@ -66,10 +74,7 @@ function App() {
         setNewLinks(newLinks);
     }
 
-    function updateCallback(
-        e: React.ChangeEvent<HTMLInputElement>,
-        index: number
-    ) {
+    function updateCallback(e: React.ChangeEvent<HTMLInputElement>, index: number) {
         const newLinks = links.map((link, i) => {
             if (i === index) {
                 return e.currentTarget.value;
@@ -114,9 +119,14 @@ function App() {
 
     return (
         <>
-            <div className="darkModeContainer" onClick={toggleDarkMode}>
-                <div className="darkModeToggle"></div>
-            </div>
+            <header>
+                <div className="darkModeContainer" onClick={toggleDarkMode}>
+                    <div className="darkModeToggle"></div>
+                </div>
+                <button className="quickAdd" title="Quick add current url" onClick={quickAdd}>
+                    <FontAwesomeIcon icon={faPlus} />
+                </button>
+            </header>
             <main>
                 <div className="header">
                     <h1>Quick Links</h1>
@@ -129,15 +139,7 @@ function App() {
                 <div className="linkList">
                     {links.map((link, index) => {
                         return (
-                            <Link
-                                key={index}
-                                id={index}
-                                link={link}
-                                copiedCallback={copiedCallback}
-                                launchCallback={launchCallback}
-                                removeCallback={removeCallback}
-                                updateCallback={updateCallback}
-                            />
+                            <Link key={index} id={index} link={link} copiedCallback={copiedCallback} launchCallback={launchCallback} removeCallback={removeCallback} updateCallback={updateCallback} />
                         );
                     })}
                 </div>
